@@ -1,0 +1,73 @@
+{% extends 'common/base.html' %}
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+    
+    {% for i,already_applied in joblist %}
+        <h3>Created by</h3>
+        <p>{{i.created_by}}</p>
+        <h3>Job Title</h3>
+        <p>{{i.Job_title}}</p>
+        <h3>Number of Openings</h3>
+        <p>{{i.Number_of_openings}}</p>
+        <h3>Category</h3>
+        <p>{{i.Category}}</p>
+        <h3>Job description</h3>
+        <p>{{i.Job_description}}</p>
+        <h3>Skill sets</h3>
+        <p>{{i.Skills}}</p>
+
+        {% if user.User_Type == 'recruiter' and i.created_by == user %}
+        <button><a href="{% url 'editjob' i.id %}">Edit</a></button>
+        <button><a href="{% url 'deletejob' i.id %}">Delete</a></button>
+        <button><a href="{% url 'applicants' i.id %}">Applicants</a></button>
+        
+        {% elif user.User_Type == 'seeker' %}
+
+            {% if already_applied %}
+                
+            <button>Already Applied</button>
+            {% else %}
+            <button><a href="{% url 'applyjob' i.id %}">Apply job</a></button>
+            {% endif %}
+                
+
+        {% endif %}
+            
+        <hr>
+    {% endfor %}
+    {% else %}
+    {% for i in joblist %}
+        <h3>Created by</h3>
+        <p>{{i.created_by}}</p>
+        <h3>Job Title</h3>
+        <p>{{i.Job_title}}</p>
+        <h3>Number of Openings</h3>
+        <p>{{i.Number_of_openings}}</p>
+        <h3>Category</h3>
+        <p>{{i.Category}}</p>
+        <h3>Job description</h3>
+        <p>{{i.Job_description}}</p>
+        <h3>Skill sets</h3>
+        <p>{{i.Skills}}</p>
+        
+        
+        {% if user.User_Type == 'recruiter' and i.created_by == user %}
+        <button><a href="{% url 'editjob' i.id %}">Edit</a></button>
+        <button><a href="{% url 'deletejob' i.id %}">Delete</a></button>
+        
+        {% elif user.User_Type == 'seeker' %}
+        <button><a href="{% url 'applyjob' i.id %}">Apply job</a></button>
+        {% endif %}
+            
+        <hr>
+    {% endfor %}
+
+
+{% endif %}
+    
+{% endblock content %}
+    

@@ -1,0 +1,26 @@
+{% extends 'profile/baseprofile.html' %}
+
+
+{% block proinfo %}
+<table border="2px">
+    <tr>
+        <th>Job Title</th>
+        <th>Category</th>
+        <th>Job Description</th>
+        <th>Skill Set</th>
+        <th>Status</th>
+    </tr>
+    
+    {% for i in applied_job %}
+        
+    <tr>
+        <td>{{i.Applied_Job.Job_title}}</td>
+        <td>{{i.Applied_Job.Category}}</td>
+        <td>{{i.Applied_Job.Job_description}}</td>
+        <td>{{i.Applied_Job.Skills}}</td>
+        <td>{{i.Status}}</td>
+    </tr>
+    {% endfor %}
+        
+</table>
+{% endblock proinfo %}

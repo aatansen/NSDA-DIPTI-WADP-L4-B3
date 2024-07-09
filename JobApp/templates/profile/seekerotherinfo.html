@@ -1,0 +1,13 @@
+{% extends 'profile/baseprofile.html' %}
+{% block proinfo %}
+<!-- Seeker Other info  -->
+<h3>Skill Sets:</h3>
+<p>{{user_info.Skills}}</p>
+<h3>Resume:</h3>
+
+{% if user_info.Resume_file %}
+<a href="{{user_info.Resume_file.url}}" target="_blank">Resume</a>
+{% endif %}
+    
+<br><br>
+{% endblock proinfo %}

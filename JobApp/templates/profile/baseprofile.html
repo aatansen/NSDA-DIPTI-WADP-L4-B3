@@ -1,0 +1,28 @@
+{% extends 'common/base.html' %}
+
+
+{% block content %}
+    <h2>Profile Management Page</h2>
+    <h3>Display Name:</h3>
+    <p>{{user.Display_name}}</p>
+    
+    <button><a href="{% url 'editprofile' %}">Edit info</a></button>
+    <button><a href="{% url 'basicinfo' %}">Basic Info</a></button>
+    <button><a href="{% url 'change_password' %}">Change Password</a></button>
+    
+    {% if user.User_Type == 'seeker' %}
+    <button><a href="{% url 'seekerotherinfo' %}">Seeker Other Info</a></button>
+    <button><a href="{% url 'appliedjob' %}">Applied Job</a></button>
+    
+    {% elif user.User_Type == 'recruiter' %}
+    <button><a href="{% url 'recruiterotherinfo' %}">Recruiter Other Info</a></button>
+    <button><a href="{% url 'postedjob' %}">Posted Job</a></button>
+    {% endif %}
+
+
+    {% block proinfo %}
+        
+    {% endblock proinfo %}
+        
+    {% endblock content %}
+    

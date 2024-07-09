@@ -1,0 +1,27 @@
+<div class="topnav">
+    <a class="active" href="{% url 'dashboard' %}">Home</a>
+ 
+    {% if user.User_Type == 'recruiter' %}
+    
+    <a href="{% url 'addjob' %}">Add Job</a>
+    {% endif %}
+    <a href="{% url 'joblist' %}">All Job</a>
+    
+    {% if user.is_authenticated %}
+    <a href="{% url 'skillmatched' %}?search=a">Skill match</a>
+      
+    <a href="{% url 'baseprofile' %}">Profile</a>
+    <a href="{% url 'signout' %}">Sign out</a>
+    
+    {% else %}
+    <a href="{% url 'signin' %}">Sign in</a>
+    
+    {% endif %}
+    
+    <div class="search-container">
+      <form action="{% url 'jobsearch' %}" method="GET">
+        <input type="text" placeholder="Search.." name="search" style="width: auto;">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </div>

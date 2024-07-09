@@ -1,0 +1,15 @@
+{% extends 'profile/baseprofile.html' %}
+{% block proinfo %}
+<!-- Recruiter Other info  -->
+<h3>Company logo:</h3>
+
+{% if user_info.Company_logo %}
+    
+<img src="{{user_info.Company_logo.url}}" width="50px" alt="">
+{% endif %}
+    
+<h3>Company name:</h3>
+<p>{{user_info.Company_name}}</p>   
+<h3>Company address:</h3>
+<p>{{user_info.Company_location}}</p>   
+{% endblock proinfo %}

@@ -1,0 +1,29 @@
+{% extends 'profile/baseprofile.html' %}
+
+
+{% block proinfo %}
+<table border="2px">
+    <tr>
+        <th>Applicant Name</th>
+        <th>Resume</th>
+        <th>Skills</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    
+    <h2>Applicant for "{{job.Job_title}}" Job</h2>
+    {% for i in applicantdata %}
+    <tr>
+        <td>{{i.Applicant}}</td>
+        <td><a href="{{i.Resume.url}}" target="_blank">Resume</a></td>
+        <td>{{i.Skills}}</td>
+        <td>{{i.Status}}</td>
+        <td>
+            <a href="{% url 'callforinterview' i.id %}">Call for Interview</a>
+            <a href="{% url 'rejected' i.id %}">Reject</a>
+        </td>
+    </tr>
+    {% endfor %}
+        
+</table>
+{% endblock proinfo %}

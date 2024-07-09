@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job Page</title>
+</head>
+<style>
+label {
+    margin-bottom: 5px;
+    color: #666;
+    text-align: left;
+    font-weight: bold;
+}
+
+input,select,textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+</style>
+
+<body>
+    <div class="container" style="width: 500px; margin: 0 auto;">
+        <h1>Edit Job Page</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>
